@@ -19,7 +19,6 @@ class wordsearch():
                 logging.warning("Word count must be specified for topic generated puzzle")
                 return ("Impossible configuration", [])
             generated_words = self.get_related_words(topic, word_count, max(maxx, maxy))
-            print(generated_words)
             word_dict = self.validate_directions(generated_words, maxx, maxy)
 
         valid = self.validate(word_dict, maxx, maxy)
@@ -309,25 +308,20 @@ class wordsearch():
                    'ho', 'chi', 'ss'}
         
         valid = []
-        print(word_list)
         for word in word_list:
-            #print(word, word_list[:i])
             if word in exclude:
-                print("Invalid (excluded):", word)
                 continue
             elif len(word) > max_len:
-                print("Invalid (too long):", word, len(word), max_len)
                 continue
             elif any(x in word for x in valid):
-                print("Invalid (dupe):", word, valid)
                 continue
             valid.append(word)
         
-        print(valid)
         return valid
 
 
 def run():
+    
     easter_words = ["easter", "bunny", "egg", "hunt", "chocolate", "spring", "basket", "bonnet", "chick",
                     "sunday", "daffodil", "duckling", "holiday", "lent"]
     maxx, maxy = 10, 10
